@@ -1,0 +1,82 @@
+pipeline {
+  agent any
+
+
+
+ options {
+    timeout(time: 60, unit: 'MINUTES')
+    timestamps()
+    buildDiscarder(logRotator(numToKeepStr: '5'))
+  }
+
+
+
+ stages {
+
+
+
+   stage('Init') {
+        steps {
+        step(Init)
+      }
+      
+    }
+
+
+
+   stage('Checkout') {
+      steps {
+         step(Checkout)
+      }
+    }
+
+
+
+   stage('Build') {
+      steps {
+         
+         step(Build)
+      }
+    }
+
+
+
+   stage('Test') {
+      steps {
+        
+       step(Test)
+      }
+    }    
+
+
+
+   stage('Deploy') {
+      steps {
+          
+         step(Deploy)
+      }
+    }
+  }
+
+
+
+ post {
+    success {
+      echo "SUCCESS"
+    }
+    failure {
+      echo "FAILURE"
+    }
+    changed {
+      echo "Status Changed: [From: $currentBuild.previousBuild.result, To: $currentBuild.result]"
+    }
+    always {
+      script {
+        def result = currentBuild.result
+        if (result == null) {
+          result = "SUCCESS"
+        }
+      }
+    }
+  }
+}
