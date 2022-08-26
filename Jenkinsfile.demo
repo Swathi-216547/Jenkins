@@ -25,7 +25,7 @@ options {
 
    stage('Checkout') {
       steps {
-         step(Checkout)
+         Checkout()
       }
     }
 
@@ -34,7 +34,7 @@ options {
    stage('Build') {
       steps {
          
-         step(Build)
+       Build()
       }
     }
 
@@ -43,7 +43,7 @@ options {
    stage('Test') {
       steps {
         
-       step(Test)
+       Test()
       }
     }    
 
@@ -52,7 +52,7 @@ options {
    stage('Deploy') {
       steps {
           
-         step(Deploy)
+        Deploy()
       }
     }
   }
