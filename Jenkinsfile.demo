@@ -15,9 +15,14 @@ options {
 
 
    stage('Init') {
-       
-      echo "Good morning"
-    }
+       steps
+       {
+        step('Init')
+        {
+        echo "Good morning"
+        }
+       }
+   }
 
 
 
