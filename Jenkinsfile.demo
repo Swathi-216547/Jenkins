@@ -17,7 +17,7 @@ options {
    stage('Init') {
        steps
        {
-        step('Init')
+        step(Init)
         {
         echo "Good morning"
         }
