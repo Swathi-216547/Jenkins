@@ -14,7 +14,7 @@ options {
 
    stage('Init') {
         steps {
-        build 'Init'
+        Init
       }
       
     }
